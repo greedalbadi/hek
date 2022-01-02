@@ -1,1 +1,3 @@
-from .ipstuff import siteip, checkrdp, checkip, checkssh, portscan
+from .ipstuff import ipstuff
+from .proxy import proxy
+
