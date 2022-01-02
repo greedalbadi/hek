@@ -3,3 +3,5 @@ class SiteHostNameRequestError(LookupError):
 
 class LengthError(ValueError):
     """ length error exception """
+class ProxyFailed(ConnectionRefusedError):
+    """ Proxy failed to connect """
