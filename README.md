@@ -10,7 +10,22 @@ pip install hek
 
 
 
+#### Simple function to check if proxy is working.
 
+```python
+import hek
+
+
+result = hek.proxy.checkproxy( # function to check if proxy is working
+    url="https://github.com/", # targeted url
+    user_agent="Mozilla/5.0", # user agent
+    proxy="185.61.94.65:61616" #  HTTP/HTTPS proxy
+    )
+if "Working" in result: # It'll return Working if It's alive end exception if not
+    print("Alive proxy")
+```
+
+It'll return Working if It's alive end exception if not
 
 #### Simple code to check if ip does exist or not.
 
@@ -19,7 +34,7 @@ import hek
 
 ip = "192.168.0.1" # targeted ip address
 
-result = hek.checkip(ip) # checking if ip exist, It'll return True is exist and False if not.
+result = hek.ipstuff.checkip(ip) # checking if ip exist, It'll return True is exist and False if not.
 
 if result == True:
     print("ip exist")
@@ -36,7 +51,7 @@ import hek
 
 ip = "192.168.0.1" # targeted device ip address
 
-result = hek.checkrdp(ip) # checking if device is rdp by the device ip.
+result = hek.ipstuff.checkrdp(ip) # checking if device is rdp by the device ip.
 
 if result == True:
     print("is rdp")
@@ -53,7 +68,7 @@ import hek
 
 ip = "192.168.0.1" # targeted device ip address
 
-result = hek.checkssh(ip) # checking if device is shh by the device ip
+result = hek.ipstuff.checkssh(ip) # checking if device is shh by the device ip
 
 if result == True:
     print("is ssh")
@@ -72,7 +87,7 @@ ip = "192.168.0.1" # targeted device ip address
 
 port = 80 # targeted port
 
-result = hek.portscan(ip=ip, port=port, timeout=3) # checking if opened port or not
+result = hek.ipstuff.portscan(ip=ip, port=port, timeout=3) # checking if opened port or not
 
 
 if result == True:
@@ -88,7 +103,7 @@ import hek
 
 url = "github.com" # targeted url
 
-ip = hek.siteip(url) # grap ip by url
+ip = hek.ipstuff.siteip(url) # grap ip by url
 
 print(ip)
 ```
