@@ -10,9 +10,9 @@ classifiers = [
 
 setup(
   name='hek',
-  version='0.0.6',
+  version='0.0.7',
   description='first version of hek',
-  long_description=open('README.txt').read() + '\n\n' + open('CHANGELOG.txt').read(),
+  long_description=open('README.txt').read(),
   url='https://github.com/greedalbadi/hek',
   author='greed albadi',
   author_email='greedalbadi@gmail.com',
@@ -20,5 +20,5 @@ setup(
   classifiers=classifiers,
   keywords='none',
   packages=find_packages(),
-  install_requires=['']
+  install_requires=['pillow']
 )
