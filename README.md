@@ -110,6 +110,17 @@ print(ip)
 
 
 
+#### Extracting image exif data.
+
+```python
+import hek
+
+data = hek.Image.extracexif(filename="hek.jpg") # grab exif data
+
+print(data) # print data
+```
+
 
 
 This program uses MIT license. 
+
