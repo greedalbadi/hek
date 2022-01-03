@@ -1,1 +1,1 @@
-This is the first version of hek that contain the command siteip, version 0.0.1
+version 0.0.8 added image exif data extract function
