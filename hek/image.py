@@ -1,7 +1,7 @@
 from PIL import Image as Im
 from PIL.ExifTags import TAGS
 import os.path
-from exceptions import *
+from .exceptions import *
 
 
 
