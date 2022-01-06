@@ -10,7 +10,7 @@ classifiers = [
 
 setup(
   name='hek',
-  version='0.0.9',
+  version='0.1.0',
   description='first version of hek',
   long_description=open('README.txt').read(),
   url='https://github.com/greedalbadi/hek',
