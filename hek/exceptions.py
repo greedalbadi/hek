@@ -9,3 +9,5 @@ class FileNotFound(FileNotFoundError):
     """ if file not found """
 class ExifExtractError(InterruptedError):
     """ exif error """
+class SocketConnectionError(ConnectionError):
+    """ socket connection error """
