@@ -1,10 +1,14 @@
+import json
 import os
 import socket
 from .exceptions import *
 import subprocess
-
-
-
+import urllib.request
+from .info import (
+    API,
+    sock,
+    request
+)
 class DefaultInfo:
     stdout = subprocess.DEVNULL
     stderr = subprocess.DEVNULL
@@ -22,23 +26,13 @@ class ipstuffclass:
             raise SiteHostNameRequestError("Request host name error") # Request host name error
 
 
-    def portscan(ip: str, port: int, timeout=3):
-        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) # create socket
-        s.settimeout(int(timeout)) # set timeout
-        conn = s.connect_ex((ip, port)) #connect to ip/port
-        if (conn == 0): # if conn not 0 connection closed
-            return True
-        else:
-            return False
-
-
-    def checkrdp(ip: str, timeout=3):
-        port = 3389 # the specific port for rdp
+    def checkrdp(ip: str, timeout=int(sock.DEFAULT_SOCKET_TIMEOUT)):
+        port = int(sock.RDP_PORT) # the specific port for rdp
         return ipstuffclass.portscan(ip, port, timeout) # checking if port is open
 
 
-    def checkssh(ip: str, timeout=3):
-        port = 22 # the specific port for ssh
+    def checkssh(ip: str, timeout=int(sock.DEFAULT_SOCKET_TIMEOUT)):
+        port = int(sock.SSH_PORT) # the specific port for ssh
         return ipstuffclass.portscan(ip, port, timeout) # checking if port is open
 
 
@@ -53,5 +47,19 @@ class ipstuffclass:
             return True
         else:
             return False
+
+    def ipinfo(ip: str, timeout: int= request.DEFAULT_REQUEST_TIMEOUT):
+        if len(ip) == 0: # if input ip length is equal o 0
+            raise LengthError("IP length error")
+        url = API.IPINFO_API + "/" + ip # process request url
+        try:
+            request = urllib.request.urlopen(url, timeout=timeout) # preform request
+
+            encode = request.info().get_content_charset('utf-8') # encode content
+
+            data = json.loads(request.read().decode(encode)) # load content to json
+            return data
+        except Exception as error:
+            raise error
 
 ipstuff = ipstuffclass
