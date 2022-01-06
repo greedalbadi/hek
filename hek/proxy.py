@@ -1,5 +1,6 @@
 import urllib.request
 from .exceptions import *
+from .info import sock
 class Proxy:
     def Handle(self, proxy: str): # creating proxy handler.
         hand = {
@@ -9,7 +10,7 @@ class Proxy:
         return urllib.request.ProxyHandler(hand) # return proxy handler
 
 
-    def checkproxy(self, url: str, proxy: str, user_agent: str, timeout: int = 15):
+    def checkproxy(self, url: str, proxy: str, user_agent: str, timeout: int = int(sock.DEFAULT_SOCKET_TIMEOUT)):
         try:
             headers = {}  # creating headers dict
             headers["User-Agent"] = str(user_agent) # adding user agent to dict
@@ -21,7 +22,7 @@ class Proxy:
 
 
             opner.open(request, timeout=timeout) # running request
-            return "Working" # if it got to this point it means that the proxy is alive
+            return True # if it got to this point it means that the proxy is alive
         except:
             raise ProxyFailed("Proxy failed")
 
