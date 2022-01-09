@@ -1,1 +1,1 @@
-version 0.0.8 added image exif data extract function
+In version 0.1.1 added wifi class for wireless stuff like connect to wifi.
