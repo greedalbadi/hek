@@ -1,23 +1,20 @@
 from setuptools import setup, find_packages
 
-classifiers = [
-  'Development Status :: 5 - Production/Stable',
-  'Intended Audience :: Education',
-  'Operating System :: Microsoft :: Windows :: Windows 10',
-  'License :: OSI Approved :: MIT License',
-  'Programming Language :: Python :: 3'
-]
+try:
+    import pypandoc
+    long_description = pypandoc.convert('README.md', 'rst')
+except (ImportError, OSError):
+    long_description = open('README.md').read()
 
 setup(
   name='hek',
-  version='0.1.0',
-  description='first version of hek',
-  long_description=open('README.txt').read(),
+  version='0.1.1',
+  description='A python library mostly used for pentesting and automation some tasks.',
+  long_description=long_description,
   url='https://github.com/greedalbadi/hek',
   author='greed albadi',
   author_email='greedalbadi@gmail.com',
   license='MIT',
-  classifiers=classifiers,
   keywords='none',
   packages=find_packages(),
   install_requires=['pillow']
