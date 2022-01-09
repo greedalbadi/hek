@@ -1,6 +1,6 @@
 # Hek
 
-
+###### A python library mostly used for pentesting and automation some tasks.
 
 ### Installation.
 
@@ -121,6 +121,21 @@ print(data) # print data
 ```
 
 
+
+#### Connect to wifi using hek library.
+
+This function is for linux also requires wifi adapter.
+
+```
+import hek
+
+# connect to wifi
+result = hek.wifi.connect(ssid="Wifi ssid/Name", # wifi ssid/name
+                          password="wifi-password" # wifi password
+                          )
+# connection result
+print(result) 
+```
 
 This program uses MIT license. 
 
