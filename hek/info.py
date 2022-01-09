@@ -10,6 +10,11 @@ class system:
 class request:
     DEFAULT_REQUEST_TIMEOUT = 10
 
+class Tools:
+    class nmcli:
+        SSID_ONLY = "sudo nmcli dev wifi connect (ssid)"
+        SECRET_CONNECT = 'sudo nmcli dev wifi connect (ssid) password "(secret)"'
+
 
 class API:
     IPINFO_API = 'http://ip-api.com/json'
