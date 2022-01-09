@@ -11,3 +11,5 @@ class ExifExtractError(InterruptedError):
     """ exif error """
 class SocketConnectionError(ConnectionError):
     """ socket connection error """
+class OperatingSystemERROR(OSError):
+    """ operating system error """
