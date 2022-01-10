@@ -1,16 +1,11 @@
 from setuptools import setup, find_packages
 
-try:
-    import pypandoc
-    long_description = pypandoc.convert('README.md', 'rst')
-except (ImportError, OSError):
-    long_description = open('README.md').read()
 
 setup(
   name='hek',
-  version='0.1.1',
+  version='0.1.2',
   description='A python library mostly used for pentesting and automation some tasks.',
-  long_description=long_description,
+  long_description=open('README.txt').read(),
   url='https://github.com/greedalbadi/hek',
   author='greed albadi',
   author_email='greedalbadi@gmail.com',
