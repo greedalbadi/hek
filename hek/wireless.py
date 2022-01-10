@@ -14,9 +14,9 @@ class Wifi:
         if os.name in Connect_sub.op: # making sure that os supported
             raise OperatingSystemERROR("this operating system is not supported")
         if password == None: # checking if uses password or not (value change)
-            result =  wifi.ssid_only(self, ssid)
+            result =  wifi.ssid_only( ssid)
         else:
-            result = wifi.secret_connect(self, ssid, password)
+            result = wifi.secret_connect( ssid, password)
 
         if "successfully activated" in result: # checking command result
             return "Connected"
