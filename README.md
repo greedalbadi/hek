@@ -137,5 +137,37 @@ result = hek.wifi.connect(ssid="Wifi ssid/Name", # wifi ssid/name
 print(result) 
 ```
 
+
+
+#### Start monitor mode.
+
+This function for linux.
+
+```python
+import hek
+
+# Start monitor mode
+result = hek.net.monitor_start(name="wlan0")
+
+# Output
+print(result)
+```
+
+
+
+#### Stop monitor mode.
+
+This function for linux.
+
+```python
+import hek
+
+# stop monitor mode
+result = hek.net.monitor_stop(name="wlan0mon")
+
+# Output
+print(result)
+```
+
 This program uses MIT license. 
 
