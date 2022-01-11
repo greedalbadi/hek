@@ -15,6 +15,10 @@ class Tools:
         SSID_ONLY = "sudo nmcli dev wifi connect (ssid)"
         SECRET_CONNECT = 'sudo nmcli dev wifi connect (ssid) password "(secret)"'
 
+    class aircrack:
+        MONITOR_START = "airmon-ng start"
+        MONITOR_STOP = "airmon-ng stop"
+
 
 class API:
     IPINFO_API = 'http://ip-api.com/json'
