@@ -1,8 +1,7 @@
 import hek
 
-# connect to wifi
-result = hek.wifi.connect(ssid="Wifi ssid/Name", # wifi ssid/name
-                          password="wifi-password" # wifi password
-                          )
-# connection result
+# stop monitor mode
+result = hek.net.monitor_stop(name="wlan0mon")
+
+# Output
 print(result)
