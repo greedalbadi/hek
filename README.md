@@ -44,6 +44,80 @@ elif result == False:
 
 It'll return True is exist and False if not.
 
+#### Get public ip.
+
+```python
+import hek
+
+# get ip 
+ip = hek.ipstuff.myip(find="query")
+
+# print ip
+print(ip)
+```
+
+you could get your ip information by removing find="query"  also you can change query and get other info about your ip.
+
+#### Ge device current username.
+
+```python
+import hek
+
+# get device current username
+user = hek.system.username()
+
+# print username
+print(user)
+```
+
+#### Sniff  and monitor any device traffic on your network.
+
+```python
+import hek, threading
+
+# start sniffing network
+def sniff():
+    hek.network.arp.start_arp(
+        # your interface mostly It'll be wlan0
+        interface="wlan0",
+        # ip of the router that the device is connected to
+        router="192.168.0.1",
+        # device ip address that you want to sniff
+        device="192.168.0.112"
+    )
+
+# this function will run wireshark according to the entered data
+def monitor_traffic():
+    
+    hek.wireshark.monitor_device(
+        # your interface mostly It'll be wlan0
+        interface="wlan0",
+        # device ip address
+        device="192.168.0.112" 
+    )
+    
+threading.Thread(target=monitor_traffic).start() # run wireshark
+threading.Thread(target=sniff).start() # start sniffing
+```
+
+##### You can use this if you just want to sniff device traffic without needing to open wireshark.
+
+```python
+import hek
+
+# start sniffing network
+def sniff():
+    hek.network.arp.start_arp(
+        # your interface mostly It'll be wlan0
+        interface="wlan0",
+        # ip of the router that the device is connected to
+        router="192.168.0.1",
+        # device ip address that you want to sniff
+        device="192.168.0.112"
+    )
+sniff()
+```
+
 #### Simple code to check if device is rdp by device ip address.
 
 ```python
@@ -126,7 +200,7 @@ print(data) # print data
 
 This function is for linux also requires wifi adapter.
 
-```
+```python
 import hek
 
 # connect to wifi
