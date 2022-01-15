@@ -13,3 +13,6 @@ class SocketConnectionError(ConnectionError):
     """ socket connection error """
 class OperatingSystemERROR(OSError):
     """ operating system error """
+
+class ArpError(InterruptedError):
+    """ arp error """
