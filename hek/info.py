@@ -19,6 +19,12 @@ class Tools:
         MONITOR_START = "airmon-ng start"
         MONITOR_STOP = "airmon-ng stop"
 
+    class ettercap:
+        ARP_START = "sudo ettercap -T -S -i (interface) -M arp:remote /(router)// /(device)//"
+
+    class wireshark:
+        MONITOR_DEVICE = 'wireshark -i (interface) -k -Y "ip.addr == (device)"'
+
 
 class API:
     IPINFO_API = 'http://ip-api.com/json'
