@@ -62,4 +62,22 @@ class ipstuffclass:
         except Exception as error:
             raise error
 
+
+    def myip(find:str=None, *args):
+        url = API.IPINFO_API
+
+        try:
+
+            req = urllib.request.urlopen(url, timeout=request.DEFAULT_REQUEST_TIMEOUT)
+
+            encode = req.info().get_content_charset('utf-8')
+
+            data = json.loads(req.read().decode(encode))
+
+            if find == None:
+                return data
+            else:
+                return data[find]
+        except Exception as error:
+            return error
 ipstuff = ipstuffclass
