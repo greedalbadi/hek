@@ -213,6 +213,27 @@ print(result)
 
 
 
+#### Doing http request using tor proxy
+
+##### With this way you can do all kinds of requests like post/get/options, before using the function you need to setup and run tor bundle you could download it from
+
+[HERE]: https://www.torproject.org/download/tor/	"HERE"
+
+```python
+import hek
+
+# request tor session
+tor_session = hek.tor.get_session()
+
+# tor get request
+result = tor_session.get("http://httpbin.org/ip").text
+
+# print result
+print(result)
+```
+
+
+
 #### Start monitor mode.
 
 This function for linux.
@@ -241,6 +262,15 @@ result = hek.net.monitor_stop(name="wlan0mon")
 
 # Output
 print(result)
+```
+
+#### Request device os name
+
+```python
+import hek
+
+os_name = hek.system.oname()
+print(os_name)
 ```
 
 This program uses MIT license. 
