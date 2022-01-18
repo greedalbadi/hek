@@ -215,9 +215,7 @@ print(result)
 
 #### Doing http request using tor proxy
 
-##### With this way you can do all kinds of requests like post/get/options, before using the function you need to setup and run tor bundle you could download it from
-
-[HERE]: https://www.torproject.org/download/tor/	"HERE"
+##### With this way you can do all kinds of requests like post/get/options, before using the function you need to setup and run tor bundle you could download it from tor official site
 
 ```python
 import hek
