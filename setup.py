@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
   name='hek',
-  version='0.1.6',
+  version='0.1.7',
   description='A python library mostly used for pentesting and automation some tasks.',
   long_description=open('README.txt').read(),
   url='https://github.com/greedalbadi/hek',
@@ -12,5 +12,5 @@ setup(
   license='MIT',
   keywords='none',
   packages=find_packages(),
-  install_requires=['pillow', "psutil"]
+  install_requires=['pillow', "psutil", "requests", "requests[socks]"]
 )

@@ -11,6 +11,16 @@ class httpbin:
 class system:
     WIN_DEFAULT_CMD_SAFE_RETURNCODE = 0
     LINUX_DEFAULT_CMD_SAFE_RETURNCODE = 0
+
+    _SYS_PLATFORMS = {
+    "Windows": ["win32", "win16",
+                "Microsoft",
+                "Microsoft Windows",
+                "Windows"],
+                "Linux": ["linux", "Linux"],
+                "MacOS": ["Darwin"],
+                "Java": ["java"]
+            }
 class request:
     DEFAULT_REQUEST_TIMEOUT = 10
 
