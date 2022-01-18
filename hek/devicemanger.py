@@ -1,7 +1,24 @@
-import psutil, os
-
+import psutil, os, sys
+from .info import system as si
 
 class System:
+
+    def oname(self, what: str = None):
+        if what:
+            platform = what
+        else:
+            platform = sys.platform
+
+        for key, value in si._SYS_PLATFORMS.items():
+            if isinstance(value, list):
+                for v in value:
+                    if v == platform:
+                        return key
+            else:
+                if value == platform:
+                    return key
+        else:
+            return platform
 
 
     # get current username
