@@ -4,6 +4,10 @@ class sock:
     RDP_PORT = 3389
     SSH_PORT = 22
 
+
+class httpbin:
+    IP = "http://httpbin.org/ip"
+
 class system:
     WIN_DEFAULT_CMD_SAFE_RETURNCODE = 0
     LINUX_DEFAULT_CMD_SAFE_RETURNCODE = 0
