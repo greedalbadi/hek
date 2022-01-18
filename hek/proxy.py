@@ -11,6 +11,7 @@ class Proxy:
 
 
     def checkproxy(self, url: str, proxy: str, user_agent: str, timeout: int = int(sock.DEFAULT_SOCKET_TIMEOUT)):
+
         try:
             headers = {}  # creating headers dict
             headers["User-Agent"] = str(user_agent) # adding user agent to dict
