@@ -262,6 +262,38 @@ result = hek.net.monitor_stop(name="wlan0mon")
 print(result)
 ```
 
+#### Screen shot.
+
+```python
+import hek
+
+hek.screen.screenshot(filename="test.png")
+```
+
+#### Webcam picture.
+
+```python
+import hek
+
+hek.webcam.webcamshot(filename="test.png")
+```
+
+#### Screen video capture.
+
+```python
+import hek
+
+hek.screen.capture_video(filename="filename.avi", seconds=5)
+```
+
+#### Webcam video capture.
+
+```python
+import hek
+
+hek.webcam.capture_video(filename="webname.avi", seconds=3)
+```
+
 #### Request device os name
 
 ```python
