@@ -3,6 +3,11 @@ class sock:
     DEFAULT_SOCKET_TIMEOUT = 10
     RDP_PORT = 3389
     SSH_PORT = 22
+class webcam_info:
+    DEFAULT_CAMERA_NUM = 0
+    VIDEO_FORMATE = ".avi"
+
+    DEFAULT_FPS = 30
 
 
 class httpbin:
