@@ -13,8 +13,12 @@ setup(
   url='https://github.com/greedalbadi/hek',
   author='greed albadi',
   author_email='greedalbadi@gmail.com',
+  project_urls={
+      'Source': 'https://github.com/greedalbadi/hek',
+      'Report Bugs': 'https://github.com/greedalbadi/hek/issues'
+  },
   license='MIT',
-  keywords=["python", "pentesting", "automation", "stream", "http"],
+  keywords=["python", "pentesting", "automation", "stream", "http", "education"],
   packages=find_packages(),
   install_requires=['pillow', "psutil", "requests", "requests[socks]",
                     "numpy", "pyautogui", "datetime", "opencv-python"
