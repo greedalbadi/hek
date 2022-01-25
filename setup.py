@@ -15,7 +15,9 @@ setup(
   author_email='greedalbadi@gmail.com',
   project_urls={
       'Source': 'https://github.com/greedalbadi/hek',
-      'Report Bugs': 'https://github.com/greedalbadi/hek/issues'
+      'Report Bugs': 'https://github.com/greedalbadi/hek/issues',
+      'Download': 'https://pypi.org/project/PyScaffold/#files',
+      'Documentation': 'https://github.com/greedalbadi/hek/blob/master/README.md'
   },
   license='MIT',
   keywords=["python", "pentesting", "automation", "stream", "http", "education"],
