@@ -306,5 +306,22 @@ os_name = hek.system.oname()
 print(os_name)
 ```
 
+#### Download content.
+
+###### You could not add any path and It'll extract the file name from the url.
+
+```python
+from hek import system
+
+# new file path
+path = "dog.jpg"
+# file url
+url = "https://example/dog_picure.jpg"
+# download content
+result = system.download_content(url=url, path=path)
+# print result
+print(result)
+```
+
 This program uses MIT license. 
 
