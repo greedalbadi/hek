@@ -1,5 +1,6 @@
 import psutil, os, sys
 from .info import system as si
+import urllib.request
 
 class System:
 
@@ -41,4 +42,26 @@ class System:
         else:
             # if is not windows os It'll just return data
             return data
+
+    def download_content(self, url: str, path: str = None):
+        # download link content
+
+        # checking if given path
+        if path != None:
+            # checking if path containing folder
+            if "\\" in path:
+                # extract file name from path
+                filename = url.split('\\')[-1]
+            else:
+                # if the path doesn't contain folders
+                filename = path
+        else:
+            # if path is not given It'll just extract the file name from the url
+            filename = url.split('/')[-1]
+        # download content ..
+        urllib.request.urlretrieve(url, filename)
+
+        return True
+
+
 system = System()
