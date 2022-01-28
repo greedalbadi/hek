@@ -13,6 +13,79 @@ pip install hek
 
 
 
+
+
+# System.
+
+
+
+#### Ge device current username.
+
+```python
+import hek
+
+# get device current username
+user = hek.system.username()
+
+# print username
+print(user)
+```
+
+#### Request device os name.
+
+```python
+import hek
+
+os_name = hek.system.oname()
+print(os_name)
+```
+
+#### Download content.
+
+###### You could not add any path and It'll extract the file name from the url.
+
+```python
+from hek import system
+
+# new file path
+path = "dog.jpg"
+# file url
+url = "https://example/dog_picure.jpg"
+# download content
+result = system.download_content(url=url, path=path)
+# print result
+print(result)
+```
+
+
+
+
+
+# Proxy usages.
+
+
+
+
+
+#### Doing http request using tor proxy
+
+###### With this way you can do all kinds of requests like post/get/options, before using the function you need to setup and run tor bundle you could download it from tor official site
+
+```python
+import hek
+
+# request tor session
+tor_session = hek.tor.get_session()
+
+# tor get request
+result = tor_session.get("http://httpbin.org/ip").text
+
+# print result
+print(result)
+```
+
+
+
 #### Simple function to check if proxy is working.
 
 ```python
@@ -29,6 +102,82 @@ if "Working" in result: # It'll return Working if It's alive end exception if no
 ```
 
 It'll return Working if It's alive end exception if not
+
+
+
+
+
+# Ip stuff.
+
+
+
+#### Code to grab site ip address.
+
+```python
+import hek
+
+url = "github.com" # targeted url
+
+ip = hek.ipstuff.siteip(url) # grap ip by url
+
+print(ip)
+```
+
+
+
+#### Code to check if opened port.
+
+```python
+import hek
+
+ip = "192.168.0.1" # targeted device ip address
+
+port = 80 # targeted port
+
+result = hek.ipstuff.portscan(ip=ip, port=port, timeout=3) # checking if opened port or not
+
+
+if result == True:
+    print("Opened port.")
+elif result == False:
+    print("Closed port.")
+```
+
+
+
+#### Checking if device SSH by device ip.
+
+```python
+import hek
+
+ip = "192.168.0.1" # targeted device ip address
+
+result = hek.ipstuff.checkssh(ip) # checking if device is shh by the device ip
+
+if result == True:
+    print("is ssh")
+elif result == False:
+    print("isn't ssh")
+```
+
+
+
+#### Simple code to check if device is rdp by device ip address.
+
+```python
+import hek
+
+ip = "192.168.0.1" # targeted device ip address
+
+result = hek.ipstuff.checkrdp(ip) # checking if device is rdp by the device ip.
+
+if result == True:
+    print("is rdp")
+elif result == False:
+    print("isn't rdp")
+```
+
+
 
 #### Simple code to check if ip does exist or not.
 
@@ -61,17 +210,23 @@ print(ip)
 
 you could get your ip information by removing find="query"  also you can change query and get other info about your ip.
 
-#### Ge device current username.
 
-```python
-import hek
 
-# get device current username
-user = hek.system.username()
 
-# print username
-print(user)
-```
+
+
+
+
+
+
+
+# Network and trafficking.
+
+
+
+
+
+
 
 #### Sniff  and monitor any device traffic on your network.
 
@@ -121,82 +276,6 @@ def sniff():
 sniff()
 ```
 
-#### Simple code to check if device is rdp by device ip address.
-
-```python
-import hek
-
-ip = "192.168.0.1" # targeted device ip address
-
-result = hek.ipstuff.checkrdp(ip) # checking if device is rdp by the device ip.
-
-if result == True:
-    print("is rdp")
-elif result == False:
-    print("isn't rdp")
-```
-
-if device is rdp by the device ip.
-
-#### Checking if device SSH by device ip.
-
-```python
-import hek
-
-ip = "192.168.0.1" # targeted device ip address
-
-result = hek.ipstuff.checkssh(ip) # checking if device is shh by the device ip
-
-if result == True:
-    print("is ssh")
-elif result == False:
-    print("isn't ssh")
-```
-
-
-
-#### Code to check if opened port.
-
-```python
-import hek
-
-ip = "192.168.0.1" # targeted device ip address
-
-port = 80 # targeted port
-
-result = hek.ipstuff.portscan(ip=ip, port=port, timeout=3) # checking if opened port or not
-
-
-if result == True:
-    print("Opened port.")
-elif result == False:
-    print("Closed port.")
-```
-
-#### Code to grab site ip address.
-
-```python
-import hek
-
-url = "github.com" # targeted url
-
-ip = hek.ipstuff.siteip(url) # grap ip by url
-
-print(ip)
-```
-
-
-
-#### Extracting image exif data.
-
-```python
-import hek
-
-data = hek.Image.extracexif(filename="hek.jpg") # grab exif data
-
-print(data) # print data
-```
-
 
 
 #### Connect to wifi using hek library.
@@ -212,25 +291,6 @@ result = hek.wifi.connect(ssid="Wifi ssid/Name", # wifi ssid/name
                           )
 # connection result
 print(result) 
-```
-
-
-
-#### Doing http request using tor proxy
-
-##### With this way you can do all kinds of requests like post/get/options, before using the function you need to setup and run tor bundle you could download it from tor official site
-
-```python
-import hek
-
-# request tor session
-tor_session = hek.tor.get_session()
-
-# tor get request
-result = tor_session.get("http://httpbin.org/ip").text
-
-# print result
-print(result)
 ```
 
 
@@ -265,6 +325,32 @@ result = hek.net.monitor_stop(name="wlan0mon")
 print(result)
 ```
 
+
+
+
+
+
+
+
+
+
+
+## Recording , videos, images stuff.
+
+
+
+#### Extracting image exif data.
+
+```
+import hek
+
+data = hek.Image.extracexif(filename="hek.jpg") # grab exif data
+
+print(data) # print data
+```
+
+
+
 #### Screen shot.
 
 ```python
@@ -295,32 +381,6 @@ hek.screen.capture_video(filename="filename.avi", seconds=5)
 import hek
 
 hek.webcam.capture_video(filename="webname.avi", seconds=3)
-```
-
-#### Request device os name
-
-```python
-import hek
-
-os_name = hek.system.oname()
-print(os_name)
-```
-
-#### Download content.
-
-###### You could not add any path and It'll extract the file name from the url.
-
-```python
-from hek import system
-
-# new file path
-path = "dog.jpg"
-# file url
-url = "https://example/dog_picure.jpg"
-# download content
-result = system.download_content(url=url, path=path)
-# print result
-print(result)
 ```
 
 This program uses MIT license. 
