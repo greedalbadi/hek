@@ -19,7 +19,7 @@ pip install hek
 
 
 
-#### Ge device current username.
+#### Get device current username.
 
 ```python
 import hek
