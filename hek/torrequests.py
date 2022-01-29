@@ -19,7 +19,12 @@ class _torinfo:
 class _session:
 
     # function to return your tor proxy identity
-    def identity(self, ip=_torinfo.default_ip, port=int(_torinfo.default_port)):
+    def identity(self, host: str=_torinfo.default_host):
+
+        # extract host ip from host string
+        ip = host.split(":")[0]
+        # extract host port from host string
+        port = int(host.split(":")[1])
 
         # setting default proxy
         socks.setdefaultproxy(socks.PROXY_TYPE_SOCKS5, ip, port)
@@ -48,37 +53,13 @@ class _session:
 
         # return data
         return data
-        '''
-        url = API.IPINFO_API
-        try:
-            headers = {}
-            headers["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36"
-            request = urllib.request.Request(url)
-
-            hand = {'http': f'socks5://{host}',
-                               'https': f'socks5://{host}'}
-            handler = urllib.request.ProxyHandler(hand)
-
-            opner = urllib.request.build_opener(handler)
-
-            req = opner.open(request)
-
-            encode = req.info().get_content_charset('utf-8')
-
-            data = json.loads(req.read().decode(encode))
-
-            return data
-        except Exception as error:
-            return error
-        '''
-
 
 class _Tor:
 
 
 
     # request session and adding tor proxy
-    def get_session(self, host=_torinfo.default_host):
+    def get_session(self, host: str = _torinfo.default_host):
 
         # request session
         session = requests.session()
