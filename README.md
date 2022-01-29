@@ -84,6 +84,24 @@ result = tor_session.get("http://httpbin.org/ip").text
 print(result)
 ```
 
+##### You may add your host/proxy manually using this way, Identity is your proxy location contain some other info. 
+
+```python
+import hek
+
+# adding host manually
+host = "127.0.0.1:9050"
+
+# request session
+session = hek.tor.get_session(host=host)
+# request your proxy identity..
+identity = session.identity(host=host)
+# print proxy identity
+print(identity)
+```
+
+###### This code result your proxy identity.
+
 
 
 #### Simple function to check if proxy is working.
@@ -337,11 +355,11 @@ print(result)
 
 ## Recording , videos, images stuff.
 
-
+###### While recording a video you could display your choice of fps like fps=30 or 60 or higher.
 
 #### Extracting image exif data.
 
-```
+```python
 import hek
 
 data = hek.Image.extracexif(filename="hek.jpg") # grab exif data
