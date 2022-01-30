@@ -1,6 +1,8 @@
 [![Downloads](https://pepy.tech/badge/hek)](https://pepy.tech/project/hek)
 [![LICENSE](https://img.shields.io/badge/LICENSE-MIT-g)](https://pepy.tech/project/hek)
 [![Python](https://img.shields.io/badge/Python-3.9-blue)](https://pepy.tech/project/hek)
+[![logo](hek-logo.png)](https://pepy.tech/project/hek)
+
 # Hek
 
 ###### A python library mostly used for pentesting and automation some tasks.
