@@ -57,7 +57,6 @@ class _session:
 class _Tor:
 
 
-
     # request session and adding tor proxy
     def get_session(self, host: str = _torinfo.default_host):
 
