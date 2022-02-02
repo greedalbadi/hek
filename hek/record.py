@@ -84,6 +84,10 @@ class _webcam:
 
 class _shared_recored:
     # shared record class is class that contains functions that multiple functions needs or neither
+    def colorframe(self, frame):
+
+        # color frame
+        return cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
     def write_video(self,filename: str='', frame=None, size=None, fps: int=int(webcam_info.DEFAULT_FPS)):
 
         # get frame size
@@ -120,7 +124,7 @@ class _screen:
         '''
         return fixed color frame
         '''
-        return cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        return self._shared_record.colorframe(frame)
 
 
     def screenshot(self, filename: str):
