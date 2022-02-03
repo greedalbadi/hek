@@ -1,9 +1,63 @@
+import subprocess
+
 import psutil, os, sys
 from .info import system as si
 import urllib.request
 
+
+
+
+class _Process:
+
+
+    def kill_process(self, name=None, pid=None, force=True):
+
+        if os.name == "nt":
+
+            if name != None:
+
+                cmd = f"taskkill /IM {name} /F"
+
+                if not force:
+                    cmd.replace(" /F", "")
+
+            elif pid != None:
+
+                cmd = f"taskkill /PID {pid} /F"
+
+                if not force:
+                    cmd.replace(" /F", "")
+        else:
+
+            if name != None:
+
+                cmd = f"killall {name}"
+
+            elif pid != None:
+
+                cmd = f"kill -9 {pid}"
+
+        result = _Process._run_command(self, cmd)
+
+        return result.returncode
+
+
+    def _run_command(self, command, shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL):
+            result = subprocess.Popen(
+                command,
+                shell=shell,
+                stdout=stdout,
+                stderr=stderr
+            )
+            result.wait()
+            return result
+
+
+
 class System:
 
+    def __init__(self):
+        self.process = _Process()
     def oname(self, what: str = None):
         if what:
             platform = what
