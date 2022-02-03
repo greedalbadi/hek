@@ -58,6 +58,26 @@ result = system.download_content(url=url, path=path)
 print(result)
 ```
 
+## System - process.
+
+#### kill process
+
+###### You could change the name argument to process pid like (pid="1234")
+
+```python
+import hek
+
+# process name
+name = "chrome.exe"
+
+# kill process
+res = hek.system.process.kill_process(name=name)
+
+print(res)
+```
+
+
+
 
 
 
