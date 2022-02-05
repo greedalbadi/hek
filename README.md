@@ -62,7 +62,7 @@ print(result)
 
 #### kill process
 
-###### You could change the name argument to process pid like (pid="1234")
+###### You could change the name argument to process pid like (pid="1234"), also you could disable kill with force using force=False.
 
 ```python
 import hek
@@ -74,6 +74,32 @@ name = "chrome.exe"
 res = hek.system.process.kill_process(name=name)
 
 print(res)
+```
+
+### Get process PID by process name.
+
+```python
+from hek import system
+
+# targeted process name\user
+name = "chrome.exe"
+# will return process PID\ID
+name = system.process.getnamebypid(name=pid)
+# print process PID\ID
+print(name)
+```
+
+### Get process name by PID.
+
+```python
+from hek import system
+
+# targeted process PID\id
+pid = "2779"
+# will return process name
+name = system.process.getnamebypid(pid=pid)
+# print process name
+print(name)
 ```
 
 
