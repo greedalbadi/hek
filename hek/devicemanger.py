@@ -41,6 +41,44 @@ class _Process:
 
         return result.returncode
 
+    def getnamebypid(self, pid: str):
+        if os.name == "nt":
+            cmd = "wmic process get description, processid"
+            key = 0
+            value = 1
+        else:
+            cmd = "top -n 1"
+            key = 1
+            value = 12
+        return _Process._by_commands(self, cmd, key, value, pid)
+
+    def getpidbyname(self, name: str):
+        if os.name == "nt":
+            cmd = "wmic process get description, processid"
+            key = 0
+            value = 1
+        else:
+            cmd = "top -n 1"
+            key = 12
+            value = 1
+        return _Process._by_commands(self, cmd, key, value, name)
+
+    def _by_commands(self, cmd, key, value, target):
+        command = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
+
+        stdout = command.stdout.read().decode('utf-8')
+        for line in stdout.splitlines():
+            try:
+                line = line.split()
+                if line[key] == target:
+                    return line[value]
+            except:
+                pass
+        return None
+
+
+
+
 
     def _run_command(self, command, shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL):
             result = subprocess.Popen(
