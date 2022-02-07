@@ -277,11 +277,99 @@ you could get your ip information by removing find="query"  also you can change 
 
 
 
+# Server.
 
 
 
+### Connect to a server.
+
+```python
+import hek
+
+# server ip
+ip = "192.168.0.1"
+# server port
+port = 80
+# set server data
+server = hek.server.set_socket(host=ip, port=port)
+
+# connect to server
+r = server.connect()
+print(f"connected: {r}")
+```
 
 
+
+### Send packet to a server.
+
+```python
+import hek
+# server ip
+ip = "192.168.0.1"
+# server port
+port = 80
+# set server data
+server = hek.server.set_socket(host=ip, port=port)
+# connect to server
+r = server.connect()
+print(f"connected: {r}")
+# the packet
+
+packet = "hi im packet"
+# send packet
+result = server.sendpacket()
+print(result)
+```
+
+
+
+### Receive data from a server.
+
+```python
+data = server.recv(bufsize=1048)
+
+print(data)
+```
+
+
+
+### Close connection.
+
+```python
+server.close()
+```
+
+
+
+### Check if server port is open.
+
+```python
+import hek
+
+# server ip
+ip = "192.168.0.1"
+# targeted port
+port = 80
+# check
+result = hek.server.portscan(ip=ip, port=port)
+print(result)
+```
+
+
+
+### Retrieve server banner.
+
+```python
+import hek
+
+# server ip
+ip = "192.168.0.1"
+# targeted port
+port = 430
+# check
+result = hek.server.get_banner(address=ip, port=port)
+print(result)
+```
 
 
 
