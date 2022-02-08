@@ -6,6 +6,8 @@
 [![Python](https://img.shields.io/badge/Python-3.9-blue)](https://pepy.tech/project/hek)
 ###### A python library mostly used for pentesting and automation some tasks.
 
+###### Hek library is not near to be completed It's under constant updates. 
+
 ### Installation.
 
 ```bash
@@ -281,6 +283,46 @@ you could get your ip information by removing find="query"  also you can change 
 
 
 
+
+
+#### Check if server port is open.
+
+```python
+import hek
+
+# server ip
+ip = "192.168.0.1"
+# targeted port
+port = 80
+# check
+result = hek.server.portscan(ip=ip, port=port)
+print(result)
+```
+
+
+
+#### Retrieve server banner.
+
+```python
+import hek
+
+# server ip
+ip = "192.168.0.1"
+# targeted port
+port = 430
+# check
+result = hek.server.get_banner(address=ip, port=port)
+print(result)
+```
+
+
+
+
+
+## server.set_socket.
+
+##### server.set_socket is a static way like a session that you only need to add the server info once to start sending and receiving data, unlike server.socket which is not static at all.
+
 ### Connect to a server.
 
 ```python
@@ -341,35 +383,60 @@ server.close()
 
 
 
-### Check if server port is open.
+# server.socket.
+
+#### server.socket unlike set_socket It's unstatic better to work with it while using multiple socket's and multithreading.
+
+
+
+## Create a socket.
 
 ```python
-import hek
+from hek import server
+# get the server value
+server = server.socket()
+# create socket
+sock = server.socket()
+```
 
-# server ip
-ip = "192.168.0.1"
-# targeted port
-port = 80
-# check
-result = hek.server.portscan(ip=ip, port=port)
+### connect to a server.
+
+```python
+# connect to a server
+result = server.connect(sock, host="192.168.0.1", port=80)
+# connection result True if connected
 print(result)
+```
+
+### send packet.
+
+```python
+# the packet
+packet = "im a packet"
+# send packet
+result = server.sendpacket(sock, packet=packet, host="192.168.0.1", port=80)
+print(result)
+```
+
+### Receive data.
+
+```python
+# receive data
+server.recv(sock, bufsize=1048)
+```
+
+### Close connection.
+
+```python
+# close connection
+server.close(sock)
 ```
 
 
 
-### Retrieve server banner.
 
-```python
-import hek
 
-# server ip
-ip = "192.168.0.1"
-# targeted port
-port = 430
-# check
-result = hek.server.get_banner(address=ip, port=port)
-print(result)
-```
+
 
 
 
