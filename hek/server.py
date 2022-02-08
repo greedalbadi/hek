@@ -18,7 +18,7 @@ class _Server_info:
 
 class Server:
     def __init__(self):
-
+        self.socket = _Socket
         self.set_socket = set_socket
 
     def get_banner(self, address: str, port: str, timeout: int = 5):
@@ -48,72 +48,89 @@ class Server:
             raise SocketConnectionError(f"connection error: {exc}")
 
 
-class set_socket:
-    def __init__(self, host: str, port: int, sock_arg1=socket.AF_INET, sock_arg2=socket.SOCK_STREAM):
-        # set values
-        self.host = host
-        self.port = port
-        # set server socket
-        self.server = socket.socket(sock_arg1, sock_arg2)
+
+class _Socket:
+
+    def socket(self, sock_arg1=socket.AF_INET, sock_arg2=socket.SOCK_STREAM):
+
+        return socket.socket(sock_arg1, sock_arg2)
 
 
-    def connect(self, host: int=None, port: int=None, timeout = int(_Server_info.CONNECT_TIMOUT)):
+    def connect(self,sock, host: str=None, port: int=None, timeout = int(_Server_info.CONNECT_TIMOUT)):
         # check if new host and port are given
-        if host != None:
-            address = (str(host), int(port))
-        else:
-            address = (str(self.host), int(self.port))
+
+        address = (str(host), int(port))
         try:
-            self.server.settimeout(int(timeout))  # set timeout
+            sock.settimeout(int(timeout))  # set timeout
             # connect to server
-            self.server.connect(address)
+            sock.connect(address)
             return True
         except:
             raise SocketConnectionError("Error: connection error")
 
 
+    def sendpacket(self, sock, packet, host: str=None, port: int=None, connected=True, auto_close=False, encoding = "utf-8"):
 
-    def sendpacket(self, packet, host: str=None, port: int=None, connected=True, auto_close=False, encoding = "utf-8"):
+        # tuple the host and port
+        address = (host, port)
 
-        # check if new host and port are given
-        if host != None:
-            address = (host, port)
-
-            # checking if user already connected
-            if connected == False:
-                set_socket.connect(self, host, port)
-        else:
-            address = (str(self.host), int(self.port))
-            # checking if user already connected
-            if connected == False:
-                set_socket.connect(self)
+        # checking if user already connected
+        if connected == False:
+            _Socket.connect(self, sock, host=host, port=port)
 
         # check if packet is bytes
         if not isinstance(packet, bytes):
             # if packet is not bytes encode it into bytes
             packet = packet.encode(encoding)
 
-        #checking if auto close enabled
-
-
         # send packet
-        if self.server.sendto(packet, address):
+        if sock.sendto(packet, address):
             if auto_close == True:
-                set_socket.close(self)
+                sock.close()
             return True
         else:
             if auto_close == True:
-                set_socket.close(self)
+                sock.close()
             return False
+    def close(self, sock):
+        # terminate connection
+        return sock.close()
 
+    def recv(self,sock, bufsize=1048):
+        # receive data
+        return sock.recv(bufsize)
+
+
+class set_socket:
+    def __init__(self, host: str, port: int, sock_arg1=socket.AF_INET, sock_arg2=socket.SOCK_STREAM):
+        # set values
+        self.host = host
+        self.port = port
+        self.socket = _Socket()
+        # set server socket
+        self.server = socket.socket(sock_arg1, sock_arg2)
+
+
+    def connect(self, host: str=None, port: int=None, timeout = int(_Server_info.CONNECT_TIMOUT)):
+        if host and port == None:
+            return self.socket.connect(self.server, host=self.host, port=self.port, timeout=timeout)
+        else:
+            return self.socket.connect(self.server, host=host, port=port, timeout=timeout)
+
+
+    def sendpacket(self, packet, host: str=None, port: int=None, connected=True, auto_close=False, encoding = "utf-8"):
+        if host and port == None:
+            return self.socket.sendpacket(self.server, packet=packet, host=self.host, port=self.port, connected=connected, auto_close=auto_close, encoding=encoding)
+        else:
+            return self.socket.sendpacket(self.server, packet=packet, host=host, port=port, connected=connected, auto_close=auto_close, encoding=encoding)
 
 
     def close(self):
         # terminate connection
-        return self.server.close()
+        return self.socket.close(self.socket)
 
     def recv(self, bufsize):
         # receive data
-        return self.server.recv(bufsize)
+        return self.socket.recv(self.socket, bufsize=bufsize)
 
 server = Server()
