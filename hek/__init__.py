@@ -7,4 +7,5 @@ from .devicemanger import system
 from .torrequests import tor
 from .record import screen, webcam, record
 from .server import server
+from .getmac import getmac
 
