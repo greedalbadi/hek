@@ -6,7 +6,7 @@ with open("README.md", "r", encoding="utf-8") as f:
 
 setup(
   name='hek',
-  version='0.3.1',
+  version='0.3.2',
   description='A python library mostly used for pentesting and automate some tasks.',
   long_description=long_description,
   long_description_content_type='text/markdown',
